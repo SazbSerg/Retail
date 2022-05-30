@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit product</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="static/styles/category-list.css" rel="stylesheet" type="text/css" >
+</head>
+<body class="sidebar-mini layout-boxed">
+
+<!-- Хедер -->
+<block th:insert="blocks/header.html :: header"></block>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Боковое меню -->
+        <block th:insert="blocks/side-bar-block.html :: side-bar-block"></block>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Редактирование продукта</h1>
+            </div>
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <form method="post" enctype="multipart/form-data">
+                        <br>
+                        <br>
+                        <input class="form-control" type="text" th:value="${productS.name}" name="name" placeholder="Название продукта">
+                        <br>
+                        <input class="form-control" type="number" th:value="${productS.vendorCode}" name="vendorCode" placeholder="Артикул">
+                        <br>
+                        <input class="form-control" type="number" th:value="${productS.price}" name="price" placeholder="Цена продукта">
+                        <br>
+                        <input class="form-control" type="number" th:value="${productS.existence}" name="existence" placeholder="Наличие продукта">
+                        <br>
+                        <input class="form-control" type="number" th:value="${productS.discount}" name="discount" placeholder="Скидка на продукт">
+                        <br>
+                        <textarea class="form-control" type="text" th:text="${productS.details}" name="details" placeholder="Описание продукта"></textarea>
+                        <br>
+                        <br>
+                        <label class="custom-file-label" for="image1">Главная картинка продукта</label>
+                        <input class="form-control" type="file" name="image1" id="image1" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <img id="previewImage1" class="form-control" th:src="@{'/product-image/'+ ${productS.image1}}" src="static/полоса.png" alt="Image"/>
+                        <br>
+                        <input class="form-control" type="file" name="image2" id="image2" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <img id="previewImage2" class="form-control" th:src="@{'/product-image/'+ ${productS.image2}}" src="static/полоса.png" alt="Image"/>
+                        <br>
+                        <input class="form-control" type="file" name="image3" id="image3" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <img id="previewImage3" class="form-control" th:src="@{'/product-image/'+ ${productS.image3}}" src="static/полоса.png" alt="Image"/>
+                        <br>
+                        <input class="form-control" type="file" name="image4" id="image4" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <img id="previewImage4" class="form-control" th:src="@{'/product-image/'+ ${productS.image4}}" src="static/полоса.png" alt="Image"/>
+                        <br>
+                        <input class="form-control" type="file" name="image5" id="image5" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <img id="previewImage5" class="form-control" th:src="@{'/product-image/'+ ${productS.image5}}" src="static/полоса.png" alt="Image"/>
+                        <br>
+                        <br>
+                        <button class="form-control" type="submit">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<script src="/static/js/retail.js"></script>
+</body>
+</html>

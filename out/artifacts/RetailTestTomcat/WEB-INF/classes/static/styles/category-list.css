@@ -1,0 +1,17 @@
+.hover-image:hover {
+    transition: 0.5s;
+    transform: scale(1.02);
+}
+.images-style{
+    height: 220px;
+}
+.plus-image{
+    color: black;
+    text-decoration: none;
+}
+.plus-image:hover {
+    transition: 0.5s;
+    transform: scale(1.02);
+    color: darkblue;
+    align-content: center;
+}

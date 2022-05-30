@@ -1,0 +1,17 @@
+.myLoginForm{
+    width: 25%;
+    height: max-content;
+    position: fixed;
+    top: 25%;
+    left: 37.5%;
+    background: linear-gradient(darkblue,cornflowerblue,deepskyblue);
+    border-radius: 10px;
+    color: whitesmoke;
+    box-shadow: 15px 15px 20px silver;
+}
+.myLoginForm:hover{
+    transform: scale(1.015);
+    background: linear-gradient(orange, yellow);
+    color: black;
+    box-shadow: 15px 15px 20px darkseagreen;
+}
