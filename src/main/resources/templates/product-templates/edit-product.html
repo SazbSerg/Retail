@@ -26,20 +26,20 @@
             </div>
             <div class="album py-5 bg-light">
                 <div class="container">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                         <br>
                         <br>
-                        <input class="form-control" type="text" th:value="${productS.name}" name="name" placeholder="Название продукта">
+                        <input required class="form-control" type="text" th:value="${productS.name}" name="name" placeholder="Название продукта">
                         <br>
-                        <input class="form-control" type="number" th:value="${productS.vendorCode}" name="vendorCode" placeholder="Артикул">
+                        <input required class="form-control" type="number" th:value="${productS.vendorCode}" name="vendorCode" placeholder="Артикул">
                         <br>
-                        <input class="form-control" type="number" th:value="${productS.price}" name="price" placeholder="Цена продукта">
+                        <input required class="form-control" type="number" th:value="${productS.price}" name="price" placeholder="Цена продукта">
                         <br>
-                        <input class="form-control" type="number" th:value="${productS.existence}" name="existence" placeholder="Наличие продукта">
+                        <input required class="form-control" type="number" th:value="${productS.existence}" name="existence" placeholder="Наличие продукта">
                         <br>
-                        <input class="form-control" type="number" th:value="${productS.discount}" name="discount" placeholder="Скидка на продукт">
+                        <input required class="form-control" type="number" th:value="${productS.discount}" name="discount" placeholder="Скидка на продукт">
                         <br>
-                        <textarea class="form-control" type="text" th:text="${productS.details}" name="details" placeholder="Описание продукта"></textarea>
+                        <textarea required class="form-control" type="text" th:text="${productS.details}" name="details" placeholder="Описание продукта"></textarea>
                         <br>
                         <br>
                         <label class="custom-file-label" for="image1">Главная картинка продукта</label>
@@ -67,5 +67,6 @@
     </div>
 </div>
 <script src="/static/js/retail.js"></script>
+<script src="/static/js/valid-form.js"></script>
 </body>
 </html>

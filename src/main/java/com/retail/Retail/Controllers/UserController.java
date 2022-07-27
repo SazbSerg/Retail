@@ -1,29 +1,28 @@
 package com.retail.Retail.Controllers;
+
 import com.retail.Retail.Models.User;
 import com.retail.Retail.Repositories.UserRepo;
 import com.retail.Retail.Services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
+
 
 @Slf4j
 @Controller
 @RequiredArgsConstructor
 public class UserController {
 
-    private final PasswordEncoder passwordEncoder;
     private final UserService userService;
     private final UserRepo userRepo;
 
 
-    //просмотр списка юзеров
     @GetMapping("/user-list-admin")
     public String showUserList(Model model) {
-        model.addAttribute("user", userRepo.findAll());
-        log.info("--- Отображён текущий список пользователей панели управления ---");
+        userService.findAllUsers(model);
         return "/user-templates/user-list-admin";
     }
 
@@ -35,24 +34,25 @@ public class UserController {
     }
 
 
-    //сохранение созданного юзера
     @PostMapping("/user-create-admin")
-    public String saveCreatedUser(User user) {
-        userService.createUser(user);
-        log.info("--- Новый пользователь "+user.getName()+" успешно создан ---");
+    public String saveCreatedUser(@Valid User user) {
+        String userEmail = user.getEmail();
+        if (userRepo.findByEmail(userEmail) != null) {
+            return "redirect:/user-create-admin?error";
+        }
+        userService.createUser(user, userEmail);
         return "redirect:/user-list-admin";
     }
 
 
     //отображение страницы редактирования юзера
     @GetMapping("/user-edit-admin/{id}")
-    public String showUserEditForm(@PathVariable(value = "id") long id, Model model) {
+    public String showUserEditForm(@PathVariable long id, Model model) {
         userService.findUserById(id, model);
         return "/user-templates/user-edit-admin";
     }
 
 
-    //сохранение отредактированного юзера
      @PostMapping("/user-edit-admin/{id}")
      public String userEditedSave(@PathVariable(value = "id") long id,
                                  @RequestParam boolean active,
@@ -68,11 +68,9 @@ public class UserController {
      }
 
 
-    //удаление юзера
     @GetMapping("/user-remove-admin/{id}")
     public String userRemoveForm(@PathVariable(value = "id") long id) {
         userService.removeUser(id);
-        log.info("--- Пользователь успешно удалён из базы данных ---");
         return "redirect:/user-list-admin";
     }
 }

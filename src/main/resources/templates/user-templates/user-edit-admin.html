@@ -24,9 +24,9 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Редактирование пользователя панели администратора</h1>
             </div>
-            <div class="album py-5 bg-light"  th:each="user : ${userss}">
+            <div class="album py-5 bg-light" th:each="user : ${userss}">
                 <div class="container">
-                    <form method="post" th:action="@{'/user-edit-admin/'+ ${user.getId()}}">
+                    <form method="post" th:action="@{'/user-edit-admin/'+ ${user.getId()}}" class="needs-validation" novalidate>
                         <br>
                         <br>
                         <label>Активен
@@ -60,5 +60,6 @@
         </main>
     </div>
 </div>
+<script src="/static/js/valid-form.js"></script>
 </body>
 </html>

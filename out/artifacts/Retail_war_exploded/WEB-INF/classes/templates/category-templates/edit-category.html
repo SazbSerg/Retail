@@ -26,10 +26,10 @@
             </div>
             <div class="album py-5 bg-light">
                 <div class="container" th:each="categories : ${category}">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                         <br>
                         <br>
-                        <input class="form-control" type="text" name="name" th:value="${categories.name}" placeholder="Название категории">
+                        <input required class="form-control" type="text" name="name" th:value="${categories.name}" placeholder="Название категории">
                         <br>
                         <br>
                         <label class="custom-file-label" for="image">Главная картинка категории</label>
@@ -45,5 +45,6 @@
     </div>
 </div>
 <script src="/static/js/retail.js"></script>
+<script src="/static/js/valid-form.js"></script>
 </body>
 </html>

@@ -26,35 +26,35 @@
             </div>
             <div class="album py-5 bg-light">
                 <div class="container" th:each="addinfo : ${addInfoss}" > <!---->
-                    <form method="post" th:action="'/add-info-edit-admin/'+${addinfo.id}">
+                    <form method="post" th:action="'/add-info-edit-admin/'+${addinfo.id}" class="needs-validation" novalidate>
                         <br>
                         <br>
                         <label for="textFirstPage">Главный текст первой страницы приветствия</label>
-                        <input class="form-control" type="text" id="textFirstPage" name="textFirstPage" placeholder="Главный текст первой страницы приветствия" th:value="${addinfo.textFirstPage}"> <!---->
+                        <input required maxlength="100" class="form-control" type="text" id="textFirstPage" name="textFirstPage" placeholder="Главный текст первой страницы приветствия" th:value="${addinfo.textFirstPage}"> <!---->
                         <br>
                         <br>
                         <label for="descriptionFirstPage">Описание приветствия на первой странице</label>
-                        <textarea class="form-control" type="text" id="descriptionFirstPage" name="descriptionFirstPage" placeholder="Описание приветствия на первой странице" th:text="${addinfo.descriptionFirstPage}" ></textarea> <!--  -->
+                        <textarea required maxlength="254" class="form-control" type="text" id="descriptionFirstPage" name="descriptionFirstPage" placeholder="Описание приветствия на первой странице" th:text="${addinfo.descriptionFirstPage}" ></textarea> <!--  -->
                         <br>
                         <br>
                         <label for="textSecondPage">Главный текст второй страницы приветствия</label>
-                        <input class="form-control" type="text" id="textSecondPage" name="textSecondPage" placeholder="Главный текст второй страницы приветствия" th:value="${addinfo.textSecondPage}">  <!--  -->
+                        <input required maxlength="100" class="form-control" type="text" id="textSecondPage" name="textSecondPage" placeholder="Главный текст второй страницы приветствия" th:value="${addinfo.textSecondPage}">  <!--  -->
                         <br>
                         <br>
                         <label for="descriptionAboutUS">Информация 'О нас'</label>
-                        <textarea class="form-control" type="text" id="descriptionAboutUS" name="descriptionAboutUS" placeholder="Информация 'О нас'" th:text="${addinfo.descriptionAboutUS}"></textarea> <!--  -->
+                        <textarea required maxlength="254" class="form-control" type="text" id="descriptionAboutUS" name="descriptionAboutUS" placeholder="Информация 'О нас'" th:text="${addinfo.descriptionAboutUS}"></textarea> <!--  -->
                         <br>
                         <br>
                         <label for="phone1">Номер телефона 1</label>
-                        <input class="form-control" type="number" id="phone1" name="phone1" placeholder="Номер телефона 1" th:value="${addinfo.phone1}"> <!--  -->
+                        <input required maxlength="15" class="form-control" type="tel" id="phone1" name="phone1" placeholder="Номер телефона 1" th:value="${addinfo.phone1}"> <!--  -->
                         <br>
                         <br>
                         <label for="phone2">Номер телефона 2</label>
-                        <input class="form-control" type="number" id="phone2" name="phone2" placeholder="Номер телефона 2" th:value="${addinfo.phone2}"> <!--  -->
+                        <input required maxlength="15" class="form-control" type="tel" id="phone2" name="phone2" placeholder="Номер телефона 2" th:value="${addinfo.phone2}"> <!--  -->
                         <br>
                         <br>
                         <label for="policies">Политика</label>
-                        <textarea class="form-control" type="text" id="policies" name="policies" placeholder="Политика" th:text="${addinfo.policies}"></textarea> <!--  -->
+                        <textarea required maxlength="5000" class="form-control" type="text" id="policies" name="policies" placeholder="Политика" th:text="${addinfo.policies}"></textarea> <!--  -->
                         <br>
                         <br>
                         <button class="form-control" type="submit">Сохранить</button>
@@ -65,6 +65,7 @@
     </div>
 </div>
 <script src="/static/js/retail.js"></script>
+<script src="/static/js/valid-form.js"></script>
 </body>
 </html>
 

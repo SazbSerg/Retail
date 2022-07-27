@@ -1425,7 +1425,7 @@ DataTable.ext.buttons.pdfFlash = $.extend( {}, flashButton, {
 		this.processing( false );
 	},
 
-	extension: '.pdf',
+	extension: 'pdf',
 
 	orientation: 'portrait',
 

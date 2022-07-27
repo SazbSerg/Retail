@@ -21,8 +21,8 @@ public class AddInfo {
     private String descriptionFirstPage;
     private String textSecondPage;
     private String descriptionAboutUS;
-    private int phone1;
-    private int phone2;
+    private String phone1;
+    private String phone2;
     private String policies;
 
 
@@ -34,7 +34,7 @@ public class AddInfo {
         this.id = id;
     }
 
-    public AddInfo(String textFirstPage, String descriptionFirstPage, String textSecondPage, String descriptionAboutUS, int phone1, int phone2, String policies) {
+    public AddInfo(String textFirstPage, String descriptionFirstPage, String textSecondPage, String descriptionAboutUS, String phone1, String phone2, String policies) {
         this.textFirstPage = textFirstPage;
         this.descriptionFirstPage = descriptionFirstPage;
         this.textSecondPage = textSecondPage;

@@ -1,14 +1,15 @@
 package com.retail.Retail.Models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
 
 @NoArgsConstructor
-@ToString
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
 @Entity
+@EqualsAndHashCode
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,17 +28,7 @@ public class Product {
     private String image4;
     private String image5;
 
-    public Product(String name, Long vendorCode, Double price, Double existence, Double discount, String details, String image1, String image2, String image3, String image4, String image5) {
-        this.name = name;
-        this.vendorCode = vendorCode;
-        this.price = price;
-        this.existence = existence;
-        this.discount = discount;
-        this.details = details;
-        this.image1 = image1;
-        this.image2 = image2;
-        this.image3 = image3;
-        this.image4 = image4;
-        this.image5 = image5;
-    }
+    @JsonManagedReference
+    @ManyToOne
+    private Category category;
 }

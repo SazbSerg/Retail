@@ -1,34 +1,42 @@
 package com.retail.Retail.Services;
 
 import com.retail.Retail.Models.Category;
+
 import com.retail.Retail.Models.Product;
 import com.retail.Retail.Repositories.CategoryRepo;
 import com.retail.Retail.Repositories.ProductRepo;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
+@Transactional
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class ProductServise {
-    @Autowired
-    private ProductRepo productRepo;
 
-    @Autowired
-    private CategoryRepo categoryRepo;
+    private final ProductRepo productRepo;
+    private final CategoryRepo categoryRepo;
 
     @Value("${upload.path.product}")
     private String uploadPathProduct;
 
+
+    //Сохранение нового продукта
     public void saveProduct(@PathVariable(value = "id") long id,
                             @RequestParam String name,
                             @RequestParam Long vendorCode,
@@ -63,6 +71,7 @@ public class ProductServise {
         product.setExistence(existence);
         product.setDiscount(discount);
         product.setDetails(details);
+        product.setCategory(category);
 
 
         if (file1 != null && !file1.getOriginalFilename().isEmpty()) {
@@ -106,6 +115,7 @@ public class ProductServise {
         log.info("Новый продукт успешно создан и сохранён в базу данных.");
     }
 
+
     //Перегрузка
     public void saveProduct(@PathVariable(value = "category_id") long categoryId,
                             @PathVariable(value = "product_id") long productId,
@@ -135,7 +145,6 @@ public class ProductServise {
 
         Category category = categoryRepo.findById(categoryId).orElseThrow();
         List<Product> products = category.getProducts();
-        //Product product = new Product();
         Product product = productRepo.findById(productId).orElseThrow();
         product.setName(name);
         product.setVendorCode(vendorCode);
@@ -184,4 +193,24 @@ public class ProductServise {
         log.info("Продукт успешно отредактирован и сохранён в базу данных.");
     }
 
+
+    //Отображения списка продуктов категории
+    public void findAllProductsByCategoryId(long id, Model model) {
+
+    }
+
+    public void findProductById(long productId, Model model) {
+        Product product = productRepo.findById(productId).orElseThrow();
+        model.addAttribute("productS", product);
+    }
+
+
+    //Удаление выбранного продукта
+    public void deleteProductByIdAndCategoryId(long categoryId, long productId) {
+        Category category = categoryRepo.findById(categoryId).orElseThrow();
+        Product product = productRepo.findById(productId).orElseThrow();
+        category.getProducts().remove(product);
+        categoryRepo.save(category);
+        productRepo.deleteById(productId);
+    }
 }

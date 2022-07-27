@@ -26,36 +26,36 @@
             </div>
             <div class="album py-5 bg-light">
                 <div class="container">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                         <br>
                         <br>
-                        <input class="form-control" type="text" name="name" placeholder="Название продукта">
+                        <input required class="form-control" type="text" name="name" placeholder="Название продукта">
                         <br>
-                        <input class="form-control" type="number" name="vendorCode" placeholder="Артикул">
+                        <input required class="form-control" type="number" name="vendorCode" placeholder="Артикул">
                         <br>
-                        <input class="form-control" type="number" name="price" placeholder="Цена продукта">
+                        <input required class="form-control" type="number" name="price" placeholder="Цена продукта">
                         <br>
-                        <input class="form-control" type="number" name="existence" placeholder="Наличие продукта">
+                        <input required class="form-control" type="number" name="existence" placeholder="Наличие продукта">
                         <br>
-                        <input class="form-control" type="number" name="discount" placeholder="Скидка на продукт">
+                        <input required class="form-control" type="number" name="discount" placeholder="Скидка на продукт">
                         <br>
-                        <textarea class="form-control" type="text" name="details" placeholder="Описание продукта"></textarea>
+                        <textarea required class="form-control" type="text" name="details" placeholder="Описание продукта"></textarea>
                         <br>
                         <br>
                         <label class="custom-file-label" for="image1">Главная картинка продукта</label>
-                        <input class="form-control" type="file" name="image1" id="image1" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <input required class="form-control" type="file" name="image1" id="image1" accept="image/png, image/jpeg, image/gif, image/jpg">
                         <img id="previewImage1" class="form-control" src="/static/rainbow.png" alt="Image"/>
                         <br>
-                        <input class="form-control" type="file" name="image2" id="image2" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <input required class="form-control" type="file" name="image2" id="image2" accept="image/png, image/jpeg, image/gif, image/jpg">
                         <img id="previewImage2" class="form-control" src="/static/rainbow.png" alt="Image"/>
                         <br>
-                        <input class="form-control" type="file" name="image3" id="image3" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <input required class="form-control" type="file" name="image3" id="image3" accept="image/png, image/jpeg, image/gif, image/jpg">
                         <img id="previewImage3" class="form-control" src="/static/rainbow.png" alt="Image"/>
                         <br>
-                        <input class="form-control" type="file" name="image4" id="image4" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <input required class="form-control" type="file" name="image4" id="image4" accept="image/png, image/jpeg, image/gif, image/jpg">
                         <img id="previewImage4" class="form-control" src="/static/rainbow.png" alt="Image"/>
                         <br>
-                        <input class="form-control" type="file" name="image5" id="image5" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <input required class="form-control" type="file" name="image5" id="image5" accept="image/png, image/jpeg, image/gif, image/jpg">
                         <img id="previewImage5" class="form-control" src="/static/rainbow.png" alt="Image"/>
                         <br>
                         <br>
@@ -67,5 +67,6 @@
     </div>
 </div>
 <script src="/static/js/retail.js"></script>
+<script src="/static/js/valid-form.js"></script>
 </body>
 </html>

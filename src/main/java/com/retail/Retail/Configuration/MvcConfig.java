@@ -1,19 +1,10 @@
 package com.retail.Retail.Configuration;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.thymeleaf.templatemode.TemplateMode;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
-import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
@@ -23,11 +14,6 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Value("${upload.path.product}")
     private String uploadPathProduct;
-
-     //  @Bean
-      // public RestTemplate getRestTemplate() {
-      //     return new RestTemplate();
-      // }
 
 
     public void addViewControllers(ViewControllerRegistry registry) {

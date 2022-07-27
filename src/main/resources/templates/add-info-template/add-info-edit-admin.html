@@ -26,7 +26,7 @@
             </div>
             <div class="album py-5 bg-light">
                 <div class="container" th:each="addinfo : ${addInfoss}" > <!---->
-                    <form method="post">
+                    <form method="post" class="needs-validation" novalidate>
                         <br>
                         <br>
                         <input class="form-control" type="text" name="textFirstPage" placeholder="Главный текст первой страницы приветствия" th:value="${addinfo.textFirstPage}"> <!---->
@@ -41,10 +41,10 @@
                         <textarea class="form-control" type="text" name="descriptionAboutUS" placeholder="Информация 'О нас'" th:text="${addinfo.descriptionAboutUS}"></textarea> <!--  -->
                         <br>
                         <br>
-                        <input class="form-control" type="number" name="phone1" placeholder="Номер телефона 1" th:value="${addinfo.phone1}"> <!--  -->
+                        <input class="form-control" type="tel" name="phone1" placeholder="Номер телефона 1" th:value="${addinfo.phone1}"> <!--  -->
                         <br>
                         <br>
-                        <input class="form-control" type="number" name="phone2" placeholder="Номер телефона 2" th:value="${addinfo.phone2}"> <!--  -->
+                        <input class="form-control" type="tel" name="phone2" placeholder="Номер телефона 2" th:value="${addinfo.phone2}"> <!--  -->
                         <br>
                         <br>
                         <textarea class="form-control" type="text" name="policies" placeholder="Политика" th:text="${addinfo.policies}"></textarea> <!--  -->
