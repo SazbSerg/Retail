@@ -1,7 +1,7 @@
 name: RetailT-CI-CD-to-AWS
 env:
   EB_PACKAGE_S3_BUCKET_NAME: "retail-admin-app-packages"
-  EB_APPLICATION_NAME: "MyRetailTAdmin"
+  EB_APPLICATION_NAME: "MyRetailAdminT"
   EB_ENVIRONMENT_NAME: "Myretailadmint-env"
   DEPLOY_PACKAGE_NAME: "retail-admin-app_${{ github.sha }}.zip"
   AWS_REGION_NAME: "us-east-1"
