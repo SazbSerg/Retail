@@ -1,27 +1,35 @@
-name: RetailCI
+name: Retail-CI-CD-to-AWS
+env:
+  EB_PACKAGE_S3_BUCKET_NAME: "retail-admin-app-packages"
+  EB_APPLICATION_NAME: "MyRetailAdmin"
+  EB_ENVIRONMENT_NAME: "Myretailadmin-env"
+  DEPLOY_PACKAGE_NAME: "retail-admin-app_${{ github.sha }}.zip"
+  AWS_REGION_NAME: "us-west-2"
 
 on:
-  
   push:
     branches: [ "master" ]
 
-  workflow_dispatch:
 
 jobs:
-  my-test:
-  
+  ci_aws:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Clone git repo
+        uses: actions/checkout@v1
+        
+      - name: Create ZIP
+        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME}} ./ -x *.git*
+        
+      - name: Configure AWS credentionals
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.RETAIL_ADMIN_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.RETAIL_ADMIN_AWS_SECRET_KEY }}
+          aws-region: ${{ env.AWS_REGION_NAME }}
+          
+      - name: Copy to S3 bucket
+        run: aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ env.retail-admin-app-packages }}/
 
-      - name: Run a one-line script
-        run: echo Hello, world of test!
-
-  my-deploy:
   
-    runs-on: ubuntu-latest
-    
-    steps:
-
-      - name: Run a one-line script
-        run: echo Hello, world of deploy!
