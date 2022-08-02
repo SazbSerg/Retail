@@ -1,7 +1,4 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
-name: Java CI with Maven
+name: Deploy to Avada
 
 on:
   push:
@@ -22,4 +19,5 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-   
+    - name: tomcat deploy  
+      run: curl -v -u tomcat:OUlIg40qOZ /home/sazbserg/IdeaProjects/Retail/target/Retail-0.0.1-SNAPSHOT.war 'http://kino.avada-media-dev1.od.ua/manager/html/list?org.apache.catalina.filters.CSRF_NONCE=05E8E8EE19011A332CFFE9DB105C967D:8087'
