@@ -16,6 +16,13 @@ public class MvcConfig implements WebMvcConfigurer {
     private String uploadPathProduct;
 
 
+
+
+
+
+
+
+
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("main");
         registry.addViewController("/login").setViewName("login");
@@ -35,6 +42,7 @@ public class MvcConfig implements WebMvcConfigurer {
                 .addResourceLocations("file://" + uploadPathCategory + "/");
         registry.addResourceHandler("/product-image/**")
                 .addResourceLocations("file://" + uploadPathProduct + "/");
+
     }
 
 
