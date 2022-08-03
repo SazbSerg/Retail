@@ -20,4 +20,4 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: tomcat deploy  
-      run: curl -v -u tomcat:OUlIg40qOZ /home/runner/work/Retail/Retail/target/Retail-0.0.1-SNAPSHOT.war "http://kino.avada-media-dev1.od.ua/manager/html/list?org.apache.catalina.filters.CSRF_NONCE=05E8E8EE19011A332CFFE9DB105C967D"
+      run: curl -v -u tomcat:OUlIg40qOZ /home/runner/work/Retail/Retail/target/Retail-0.0.1-SNAPSHOT.war "http://kino.avada-media-dev1.od.ua/manager/html/list?org.apache.catalina.filters.CSRF_NONCE=05E8E8EE19011A332CFFE9DB105C967D/Retail-0.0.1-SNAPSHOT"
